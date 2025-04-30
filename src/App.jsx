@@ -12,8 +12,6 @@ function App() {
   const [mostrarCuentas, setMostrarCuentas] = useState(true); // Es una variable booleana que por defecto es true
   const [mostrarModal, setMostrarModal] = useState(true);
 
-  console.log(mostrarModal)
-
   const [cuentas, setCuentas] = useState([
     {concepto: "comida", cantidad: 30.55, padadoPor: "Pere", id: 1},
     {concepto: "cena", cantidad: 45.65, padadoPor: "Toni", id: 2},
@@ -55,11 +53,16 @@ function App() {
         ))
       }
 
-      <Modal handleCerrar = {handleCerrar}>
-        <h2>Componente Modal</h2>
-        <p>Ahora cambiamos el contenido</p>
-        <p>Otro párrafo</p>
-      </Modal>
+      {mostrarModal && <Modal handleCerrar = {handleCerrar}>
+          <h2>Componente Modal</h2>
+          <p>Ahora cambiamos el contenido</p>
+          <p>Otro párrafo</p>
+        </Modal>
+        }
+
+      <div>
+          <button onClick={ () => setMostrarModal(true)}>Mostrar Modal</button>
+      </div> 
     </div>
   )
 }
