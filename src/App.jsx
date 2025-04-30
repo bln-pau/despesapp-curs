@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react'; // Para poder usar fragment necesitamos React
 import './App.css';
 import Titulo from './componentes/titulo/Titulo';
 
-/* RELACIÓN ENTRE COMPONENTE PADRE E HIJO
-    Se necesita utilizar un atributo para reutilizarlo.
+/* FRAGMENT
+    Para eliminar encapsulamientos de elementos
 */
 
 function App() {
@@ -40,10 +40,10 @@ function App() {
       
       { mostrarCuentas && 
         cuentas.map((cuenta, indice) => (
-          <div key={cuenta.id}>
+          <React.fragment key={cuenta.id}> 
             <h2>{ indice + 1 } - { cuenta.concepto }</h2>
             <button onClick={ () => handleClick(cuenta.id)}>Eliminar despesa</button>
-          </div>
+          </React.fragment>
         ))
       }
     </div>
