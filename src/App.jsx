@@ -4,12 +4,15 @@ import Titulo from './componentes/titulo/Titulo';
 import Modal from './componentes/modal/Modal';
 
 /* MODAL
-    Los elementos añadidos son hijos del componente Modal
+    Vamos a pasar funciones en el props
 */
 
 function App() {
 
   const [mostrarCuentas, setMostrarCuentas] = useState(true); // Es una variable booleana que por defecto es true
+  const [mostrarModal, setMostrarModal] = useState(true);
+
+  console.log(mostrarModal)
 
   const [cuentas, setCuentas] = useState([
     {concepto: "comida", cantidad: 30.55, padadoPor: "Pere", id: 1},
@@ -21,6 +24,10 @@ function App() {
 
   const handleClick = (id) => {
     setCuentas ((cuentasPrevias) => cuentas.filter((cuenta) => id !==  cuenta.id));
+  }
+
+  const handleCerrar = () => {
+    setMostrarModal(false); 
   }
 
   return (
@@ -48,7 +55,7 @@ function App() {
         ))
       }
 
-      <Modal>
+      <Modal handleCerrar = {handleCerrar}>
         <h2>Componente Modal</h2>
         <p>Ahora cambiamos el contenido</p>
         <p>Otro párrafo</p>
