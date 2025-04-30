@@ -1,9 +1,10 @@
 import React, { useState } from 'react'; // Para poder usar fragment necesitamos React
 import './App.css';
 import Titulo from './componentes/titulo/Titulo';
+import Modal from './componentes/modal/Modal';
 
-/* FRAGMENT
-    Para eliminar encapsulamientos de elementos
+/* MODAL
+    Los elementos añadidos son hijos del componente Modal
 */
 
 function App() {
@@ -40,12 +41,18 @@ function App() {
       
       { mostrarCuentas && 
         cuentas.map((cuenta, indice) => (
-          <React.fragment key={cuenta.id}> 
+          <React.Fragment key={cuenta.id}> 
             <h2>{ indice + 1 } - { cuenta.concepto }</h2>
             <button onClick={ () => handleClick(cuenta.id)}>Eliminar despesa</button>
-          </React.fragment>
+          </React.Fragment>
         ))
       }
+
+      <Modal>
+        <h2>Componente Modal</h2>
+        <p>Ahora cambiamos el contenido</p>
+        <p>Otro párrafo</p>
+      </Modal>
     </div>
   )
 }
