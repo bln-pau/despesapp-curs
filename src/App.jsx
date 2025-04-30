@@ -49,7 +49,7 @@ function App() {
         
       }
 
-      {mostrarModal && <Modal handleCerrar = {handleCerrar}>
+      {mostrarModal && <Modal handleCerrar = {handleCerrar} esBorde = {true}>
           <h2>Componente Modal</h2>
           <p>Ahora cambiamos el contenido</p>
           <p>Otro párrafo</p>
