@@ -2,6 +2,7 @@ import React, { useState } from 'react'; // Para poder usar fragment necesitamos
 import './App.css';
 import Titulo from './componentes/titulo/Titulo';
 import Modal from './componentes/modal/Modal';
+import GastosLista from './componentes/gastosLista/gastosLista';
 
 /* MODAL
     Vamos a pasar funciones en el props
@@ -33,24 +34,19 @@ function App() {
       <Titulo titulo = "Bienvenidos al curso!!" subtitulo = { subtitulo }/>
       { !mostrarCuentas && 
           (<div>
-            <button onClick={ () => setMostrarCuentas(true)}>Ocultar cuentas</button>
+            <button onClick={ () => setMostrarCuentas(true)}>Mostrar cuentas</button>
           </div>)
       }
 
       { 
         mostrarCuentas && 
           (<div>
-            <button onClick={ () => setMostrarCuentas(false)}>Mostrar cuentas</button>
+            <button onClick={ () => setMostrarCuentas(false)}>Ocultar cuentas</button>
           </div>)
       }
       
-      { mostrarCuentas && 
-        cuentas.map((cuenta, indice) => (
-          <React.Fragment key={cuenta.id}> 
-            <h2>{ indice + 1 } - { cuenta.concepto }</h2>
-            <button onClick={ () => handleClick(cuenta.id)}>Eliminar despesa</button>
-          </React.Fragment>
-        ))
+      { mostrarCuentas && <GastosLista cuentas = {cuentas}></GastosLista>
+        
       }
 
       {mostrarModal && <Modal handleCerrar = {handleCerrar}>
